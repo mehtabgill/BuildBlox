@@ -23,12 +23,12 @@ def index():
         '''
         output = result['text']
     else:
-        return render_template("index.html", output=None)
+        return render_template("index.html", output='')
     
     outputList = []
 
     # Our sequence of support functions
-    output = support.fun0.startModule(output)  
+    output = support.fun0.startModule(output)   
 
 
     return render_template("index.html", output=output)

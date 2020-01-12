@@ -1,0 +1,6 @@
+<form class="form" action="/" method="POST">
+<input type="text" name="textText" placeholder="Message to send"/><br>
+<button>Send text to Twillio</button><br><p></p>
+
+<input type = "submit" value = "Get sentiment score" />
+</form>

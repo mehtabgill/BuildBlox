@@ -3,5 +3,5 @@
   <p>Text to analyse<input type = "text" name = "text" /></p>
   <p><input type = "submit" value = "Get sentiment score" /></p>
 </form><br>
-<p>{{resFeeling}} ({{ana.score}})</p>
+<p>{{output}}</p>
 <br><br>

@@ -16,7 +16,7 @@ def index():
     if request.method == "POST":
         if request.files:
             image = request.files["image"]
-            print(equest.data['analytic'])
+            print(request.data['analytic'])
 
             # Our sequence of support functions
             output = analyze_img(img_file=image, analytic=request.data['analytic']) # function for sending text and receiving response
