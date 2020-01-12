@@ -23,7 +23,7 @@
     <header>
       <!-- Fixed navbar -->
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="http://localhost:5000/">Terms of Service Highlighter</a>
+        <a class="navbar-brand" href="http://localhost:5000/">AppBlox</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -50,7 +50,7 @@
     <!-- Begin page content -->
     <main role="main" class="container">
       <br><br><br>
-      <h1 class="mt-5">submitCreation</h1>
+      <h1 class="mt-5">Create your own web app in a matter of seconds!</h1>
       <br>
        <form class="form" action="/submitCreation" method="POST">
           <u>Module 0:</u><br>
@@ -60,6 +60,7 @@
             <option value="senemental">Sentimental Analysis</option>
             <option value="azure">Azure</option>
           </select>
+
           <br><br>
           <u>Module 1:</u><br>
           
@@ -79,18 +80,19 @@
             <option value="azure">Azure</option>
           </select>
           <br><br>
-          <input type="submit" value="Filter"/>
+          <button class="btn btn-primary" type="submit">Generate Web App</button>
+          
        </form>
       <br>
-      Here is the original terms of service:
 
+      <!--
       <u>Preview:</u>
       <p style='border: 1px solid black; padding:10px;'>
         {% for codeLine in resList %}
           {{ codeLine }}<br>
         {% endfor %}
       </p>
-
+      -->
       <u>Raw code:</u>
       <p style='border: 1px solid black; padding:10px;'>
         {% for codeLine in resList %}
@@ -105,7 +107,9 @@
     -->
      
       <br><br>
+      <!--
       <center><button type="button" class="btn btn-danger">Reject terms of service</button> <button type="button" class="btn btn-success">Accept terms of service</button></center>
+    -->
     </main>
 
     <footer class="footer">
