@@ -69,11 +69,14 @@ def getModuleCode(moduleBlock):
         resPyCode = readCodeFromFile('./codeBlocks/sentimental-analysis-py.txt')
         modulePyList.append(resPyCode)
 
-    elif moduleBlock == 'azure':
-        resCode = '<b>Azure</b><br>\n'
+    elif moduleBlock == 'cv':
+        # Web app
+        resCode = readCodeFromFile('./codeBlocks/object-detection-html.txt')
         moduleResList.append(resCode)
-        resCode = '<input type="text" value="azure"><br>\n'
-        moduleResList.append(resCode)
+
+        # Python app
+        resPyCode = readCodeFromFile('./codeBlocks/object-detection-py.txt')
+        modulePyList.append(resPyCode)
     else:
         moduleResList('<b>Error<b>\n')
 

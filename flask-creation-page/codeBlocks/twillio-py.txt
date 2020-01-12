@@ -77,7 +77,8 @@ def startModule(inputText):
         inputText = ''
 
     print("Sending text message")
-    output = sms_send("+17785583011", "+12056512211", inputText)
+    #output = sms_send("+17785583011", "+12056512211", inputText)
+    output = sms_send("+12368334517", "+12056512211", inputText)
     print("Sent text message")
     
 

@@ -21,10 +21,12 @@ def index():
             output = result['text']
         elif 'image' in result.keys():
             output = result['image']
-
+        print('This is output: ', output)
         # Our sequence of support functions
         output = support.fun0.startModule(output) 
-        output = support.fun1.startModule(output)  
+        print('Output after first wave: ', output)
+        output = support.fun1.startModule(output)
+        output = ''
     else:
         return render_template("index.html", output='')
     

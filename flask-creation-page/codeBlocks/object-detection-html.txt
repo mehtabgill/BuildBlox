@@ -1,0 +1,25 @@
+<html>
+    <h1>Upload an image</h1>
+      <hr>
+
+      <form action="/" method="POST" enctype="multipart/form-data">
+
+        <div class="form-group">
+          <label>Select images</label>
+          <div class="custom-file" name="image">
+            <input type="file" class="custom-file-input" name="image" id="image">
+            <label class="custom-file-label" for="image">Select image...</label>
+            <p><select name="analytic">
+                <option value="brands">brands</option>
+                <option value="faces">faces</option>
+                <option value="adult">adult</option>
+                <option value="written text">written text</option>
+            </select></p>
+          </div>
+          
+        </div>
+
+        <button type="submit" class="btn btn-primary">Upload</button>
+
+      </form>
+</html>
