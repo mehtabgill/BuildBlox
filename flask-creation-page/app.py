@@ -19,13 +19,11 @@ def submitCreation():
     if request.method == 'POST':
         result = request.form
 
-        
-
         moduleList = []
         moduleList.append(result['moduleType0'])
 
-        
-        #moduleList.append(result['moduleType1'])
+
+        moduleList.append(result['moduleType1'])
         #moduleList.append(result['moduleType2'])
     
     

@@ -47,7 +47,10 @@ def sms_receive():
     print("Message recieved from: " + number)
     print("Message: " + msg)
 
-    result1 =  support.fun0.input_taker(msg,'sentiment')
+    try: 
+        result1 =  support.fun0.input_taker(msg,'sentiment')
+    except:
+        result1 =  support.fun1.input_taker(msg,'sentiment')
     
     resFeeling = 'I am quite happy' 
     

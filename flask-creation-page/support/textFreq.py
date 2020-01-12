@@ -97,8 +97,10 @@ def generateCode(moduleList):
 
     # Insert middle code
     for i,moduleBlock in enumerate(moduleList): 
+        
         moduleResList,modulePyList = getModuleCode(moduleBlock.lower())
-        resList = resList + moduleResList 
+        if i == 0:
+            resList = resList + moduleResList 
 
         resList.append('<b><b>\n\n')
 

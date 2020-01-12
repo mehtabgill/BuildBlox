@@ -60,8 +60,11 @@ def input_taker(text,ana):
     return do_text_analysis(documents=doc, analysis=analysis)
 
 def sms_send(destNumber, srcNumber, sendMessage):
-
-
+    print(str(sendMessage).isdigit())
+    if str(sendMessage).isdigit() :
+        
+        sendMessage = 'There are ' + str(sendMessage) + ' people'
+        print(sendMessage)
     client = Client(account_sid, auth_token)
 
     message = client.messages.create(
