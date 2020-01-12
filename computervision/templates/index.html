@@ -5,21 +5,23 @@
       <form action="/" method="POST" enctype="multipart/form-data">
 
         <div class="form-group">
-          <label>Select images</label>
+          <label>Select image</label>
           <div class="custom-file">
             <input type="file" class="custom-file-input" name="image" id="image">
             <label class="custom-file-label" for="image">Select image...</label>
-            <p><select name="analytic">
-                <option value="brands">brands</option>
-                <option value="faces">faces</option>
-                <option value="adult">adult</option>
-                <option value="written text">written text</option>
-            </select></p>
           </div>
-          
+          <p><select name="analytic">
+            <option value="brands">brands</option>
+            <option value="faces">faces</option>
+            <option value="adult">adult</option>
+            <option value="written text">written text</option>
+        </select></p>
         </div>
 
         <button type="submit" class="btn btn-primary">Upload</button>
 
       </form>
+      <p>Image Description: {{data.imd}}</p>
+      <p>Analytic Result: {{data.anr}}</p>
+      <a href="https://docs.google.com/spreadsheets/d/1SmN5X4hlEgO0CRKc8s_wSEc_KnroE7_bir7N_Tzxeck/edit?ts=5e1b5e45#gid=0" title="_blank">See Slides</a>
 </html>

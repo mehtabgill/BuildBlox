@@ -1,12 +1,15 @@
 from flask import Flask
 from flask import request, redirect, render_template
+import re
+import os
 # -*- coding: utf-8 -*-
 import os
 os.environ["COMPUTER_VISION_SUBSCRIPTION_KEY"] = "5898631625714b43b27b6cd31dd0d3ad"
 os.environ["COMPUTER_VISION_ENDPOINT"] = "https://westcentralus.api.cognitive.microsoft.com"
+RE_CONTENT_RANGE = re.compile(r'^bytes (\d+)-(\d+)/(\d+)$')
+RE_ALLOWED_FILEKEYS = re.compile(r'^[a-zA-Z0-9-]+$')
 
-from support.fun0 import analyze_img
-
+from support.fun0 import analyze_img, stdLib
 
 app = Flask(__name__)
 
@@ -15,11 +18,13 @@ def index():
     dis1 = {'imd': '', 'anr': ''}
     if request.method == "POST":
         if request.files:
-            image = request.files["image"]
-            print(request.data['analytic'])
-
+            file_ = request.files["image"]
+            file_.save('/tmp/'+file_.filename)
+            pathi = str('/tmp/'+file_.filename)
+            print(pathi)
             # Our sequence of support functions
-            output = analyze_img(img_file=image, analytic=request.data['analytic']) # function for sending text and receiving response
+            output = analyze_img(img_file=pathi, analytic=request.form['analytic'])
+            stdLib(img=pathi, info=output )
             dis1['imd'] = output['Image Description']
             dis1['anr'] = output['Analytic Result']
 
