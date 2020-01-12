@@ -46,14 +46,13 @@ def getModuleCode(moduleBlock):
         resCode = '<b>Twillio feature</b><br>\n'
         moduleResList.append(resCode)
 
-        resCode = '<input type="text" value="twillio"><br>\n'
+        # Web app
+        resCode = readCodeFromFile('./codeBlocks/twillio-html.txt')
         moduleResList.append(resCode)
 
-
-        # Python part
-
-        resCode = '<button>Send text to Twillio</button><br>\n'
-        moduleResList.append(resCode)
+        # Python app
+        resPyCode = readCodeFromFile('./codeBlocks/twillio-py.txt')
+        modulePyList.append(resPyCode)
 
     elif moduleBlock == 'slack':
         resCode = '<b>Slack</b><br>\n'

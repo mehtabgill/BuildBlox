@@ -28,7 +28,7 @@ def index():
     outputList = []
 
     # Our sequence of support functions
-    output = support.fun0.startModule(output)  
+    output = support.fun0.startModule(output)   
 
 
     return render_template("index.html", output=output)
