@@ -2,15 +2,8 @@
    <body>
       <form action = "http://localhost:5000/" method = "POST">
          <p>Text to analyse<input type = "text" name = "text" /></p>
-         <p>Analysis <select  name='ana'>
-            <option value="language">Language</option>
-            <option value="sentiment">Sentiment</option>
-          </select></p>
-         <p><input type = "submit" value = "submit" /></p>
+         <p><input type = "submit" value = "Get sentiment score" /></p>
       </form>
-      <p>doc: {{ana.doc}}</p>
-      <p>lang: {{ana.language}}</p>
-      <p>score: {{ana.score}}</p>
-      <p>name: {{ana.name}}</p>
+      <p>{{output}}</p>
    </body>
 </html>

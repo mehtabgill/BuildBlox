@@ -57,6 +57,11 @@ def getModuleCode(moduleBlock):
         moduleResList.append(resCode)
         resCode = '<input type="text" value="slack"><br>\n'
         moduleResList.append(resCode)
+
+    elif moduleBlock == 'senemental':
+        resCode = readCodeFromFile('./codeBlocks/sentiment-analysis-html.txt')
+        moduleResList.append(resCode)
+
     elif moduleBlock == 'azure':
         resCode = '<b>Azure</b><br>\n'
         moduleResList.append(resCode)

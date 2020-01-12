@@ -1,14 +1,7 @@
-from flask import Flask
-from flask import request, redirect, render_template
-# -*- coding: utf-8 -*-
-
 import os
 import sys
 from azure.cognitiveservices.language.textanalytics import TextAnalyticsClient
 from msrest.authentication import CognitiveServicesCredentials
-
-
-app = Flask(__name__)
 
 
 subscription_key = "5be536ec702a4487aa3c2b636a3cf887"
@@ -66,15 +59,33 @@ def input_taker(text,ana):
 
 
 
-@app.route("/",methods = ['POST', 'GET'])
-def index():
+def startModule(inputText):
     result1 = {'doc':'','language':'','score':'','name':''}
-    if request.method == 'POST':
-        result = request.form
-        result1 =  input_taker(result['text'],result['ana'])
-        print(result1)
-    return render_template("index-original.html", ana = result1)
+    if inputText is None:
+        inputText = ''
 
 
-if __name__ == __name__:
-    app.run(debug=True)
+    result1 =  input_taker(inputText,'sentiment')
+        #result1 =  input_taker(result['text'],result['ana'])
+    
+    resFeeling = 'I am quite happy' 
+    
+    if result1 is not None and result1['score'] != '':
+        if float(result1['score']) >= 0.75: 
+            resFeeling = 'I am quite happy' 
+        elif float(result1['score'])  >= 0.5: 
+            resFeeling = 'I am okay'
+        elif float(result1['score'])  >= 0.25: 
+            resFeeling = 'I am not okay'
+        else: 
+            resFeeling = 'I am sad'   
+    else:
+        result1 = {'doc':'','language':'','score':'','name':''}
+        result1['score'] = 'Please enter text'
+        resFeeling = 'Invalid'
+
+
+    output = result1['score'] 
+
+    return output 
+

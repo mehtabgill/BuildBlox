@@ -71,9 +71,24 @@ def index():
     result1 = {'doc':'','language':'','score':'','name':''}
     if request.method == 'POST':
         result = request.form
-        result1 =  input_taker(result['text'],result['ana'])
-        print(result1)
-    return render_template("index-original.html", ana = result1)
+        result1 =  input_taker(result['text'],'sentiment')
+        #result1 =  input_taker(result['text'],result['ana'])
+    print(result1)
+    resFeeling = 'I am quite happy' 
+    
+    if result1['score'] != '':
+        if float(result1['score']) >= 0.75: 
+            resFeeling = 'I am quite happy' 
+        elif float(result1['score'])  >= 0.5: 
+            resFeeling = 'I am okay'
+        elif float(result1['score'])  >= 0.25: 
+            resFeeling = 'I am not okay'
+        else: 
+            resFeeling = 'I am sad'   
+    else:
+        result1['score'] = 'Please enter text'
+        resFeeling = 'Invalid'
+    return render_template("index.html", ana = result1, resFeeling=resFeeling)
 
 
 if __name__ == __name__:

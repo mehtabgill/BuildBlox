@@ -22,31 +22,7 @@ def submitCreation():
 
     if request.method == 'POST':
         result = request.form
-    '''
-        if result['moduleType0'] == 'slack':
-            splitNum = 300
-            contractDir = './slack/'
 
-            moduleBlock = 'slack'
-
-        elif result['moduleType0'] == 'azure':
-            splitNum = 400
-            contractDir = './azure/'
-
-            moduleBlock = 'azure'
-        else:
-            # We are doing hotel
-            splitNum = 400
-            contractDir = './twillio/'
-
-            moduleBlock = 'twillio'
-    
-    else:
-        topNRankNum  = request.args.get('top',None)
-
-    if topNRankNum is None:
-        topNRankNum = 5
-    '''
     moduleList = []
     moduleList.append(result['moduleType0'])
     moduleList.append(result['moduleType1'])

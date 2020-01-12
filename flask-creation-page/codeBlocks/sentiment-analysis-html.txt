@@ -1,9 +1,3 @@
-<html>
-<head></head>
-<b>Slack</b><br>
-<input type="text" value="slack"><br>
-<b><b>
-
 <br><br>
 <form action = "/" method = "POST"><br>
   <p>Text to analyse<input type = "text" name = "text" /></p>
@@ -11,10 +5,3 @@
 </form><br>
 <p>{{resFeeling}} ({{ana.score}})</p>
 <br><br>
-<b><b>
-
-<b>Azure</b><br>
-<input type="text" value="azure"><br>
-<b><b>
-
-</html>
