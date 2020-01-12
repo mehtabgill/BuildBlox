@@ -21,7 +21,9 @@ def index():
     outputList = []
 
     # Our sequence of support functions
-    output = support.fun0.startModule(output)
+    output = support.fun0.startModule(output)  # function for sending text and receiving response
+    #output = support.fun1.startModule(output)  # function for sentimental analysis
+    ############################
 
     return render_template("index.html", output=output)
 
