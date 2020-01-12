@@ -1,6 +1,6 @@
 # import the Flask class from the flask module
 from flask import Flask, render_template, request
-from support.textFreq import textFreqCal, generateCode
+from support.textFreq import generateCode
 
 # create the application object
 app = Flask(__name__)
@@ -23,13 +23,15 @@ def submitCreation():
     if request.method == 'POST':
         result = request.form
 
-    moduleList = []
-    moduleList.append(result['moduleType0'])
-    moduleList.append(result['moduleType1'])
-    moduleList.append(result['moduleType2'])
+        moduleList = []
+        moduleList.append(result['moduleType0'])
+
+
+        #moduleList.append(result['moduleType1'])
+        #moduleList.append(result['moduleType2'])
     
     
-    resList,resPrint = generateCode(moduleList)
+        resList,resPrint = generateCode(moduleList)
 
 
     #resText,resRank, mainContract = textFreqCal(topNRankNum,splitNum,contractDir)
