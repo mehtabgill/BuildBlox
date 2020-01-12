@@ -1,12 +1,12 @@
 from flask import Flask
 from flask import request, redirect, render_template
 # -*- coding: utf-8 -*-
-
+from twilio.twiml.messaging_response import MessagingResponse
 import os
 import sys
 from azure.cognitiveservices.language.textanalytics import TextAnalyticsClient
 from msrest.authentication import CognitiveServicesCredentials
-
+import support.fun0
 
 app = Flask(__name__)
 
@@ -49,7 +49,6 @@ def do_text_analysis(documents, analysis):
     return result
 
 
-
 def input_taker(text,ana):
     g = text
 
@@ -65,7 +64,6 @@ def input_taker(text,ana):
     return do_text_analysis(documents=doc, analysis=analysis)
 
 
-
 @app.route("/",methods = ['POST', 'GET'])
 def index():
     result1 = {'doc':'','language':'','score':'','name':''}
@@ -74,7 +72,6 @@ def index():
         result1 =  input_taker(result['text'],result['ana'])
         print(result1)
     return render_template("index-original.html", ana = result1)
-
 
 if __name__ == __name__:
     app.run(debug=True)
