@@ -1,40 +1,42 @@
 from flask import Flask
 from flask import request, redirect, render_template
 # -*- coding: utf-8 -*-
-from twilio.rest import Client
+
 import support.fun0
+import support.fun1
 
 
 app = Flask(__name__)
+app.static_folder = 'static'
 
 @app.route("/",methods = ['POST', 'GET'])
 def index():
     result1 = {'doc':'','language':'','score':'','name':''}
-
+    output = 'None'
     # Input phase
     if request.method == 'POST':
         result = request.form
-        '''
-        if 'text' in result.keys()
+        
+        if 'text' in result.keys():
             output = result['text']
         elif 'image' in result.keys():
             output = result['image']
 
-        '''
-        output = result['text']   
+        # Our sequence of support functions
+        output = support.fun0.startModule(output) 
+        output = support.fun1.startModule(output)  
     else:
-        return render_template("index.html", output=None)
+        return render_template("index.html", output='')
     
     outputList = []
 
-    # Our sequence of support functions
-    output = support.fun0.startModule(output)  # function for sending text and receiving response
-    #output = support.fun1.startModule(output)  # function for sentimental analysis
-
-    ############################
+     
+    print("***** THIS IS OUR RESULT MESSAGE ********")
+    print(output)
 
     return render_template("index.html", output=output)
 
+from twilio.twiml.messaging_response import MessagingResponse, Message
 @app.route("/sms", methods=['GET', 'POST'])
 def sms_receive():
     # Display sent message
@@ -62,10 +64,17 @@ def sms_receive():
         resFeeling = 'Invalid'
 
 
-    print(resFeeling)
+    
     output = result1['score'] 
+    print('output: ',output)
 
-    return render_template("index.html", output = output, resFeeling=resFeeling)
+    response = MessagingResponse()
+    msgStr = 'The person you are talking with has a positivity of ' + str(output)
+    response.message(msgStr)
+
+    print(str(response))
+    return str(response)
 
 if __name__ == __name__:
-    app.run(debug=True)
+    #app.run(debug=True)
+    app.run(host='localhost', port=6060)

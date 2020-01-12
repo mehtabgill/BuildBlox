@@ -1,4 +1,5 @@
 *.swp
+*authkey.py
 
 
 # Byte-compiled / optimized / DLL files

@@ -1,8 +1,9 @@
 import os
 import sys
+from twilio.rest import Client
+from flask import request
 from azure.cognitiveservices.language.textanalytics import TextAnalyticsClient
 from msrest.authentication import CognitiveServicesCredentials
-
 
 subscription_key = "5be536ec702a4487aa3c2b636a3cf887"
 endpoint = "https://westcentralus.api.cognitive.microsoft.com"
@@ -57,15 +58,31 @@ def input_taker(text,ana):
     
     return do_text_analysis(documents=doc, analysis=analysis)
 
+def sms_send(destNumber, srcNumber, sendMessage):
 
+    account_sid = "AC9a1b3e11faf9fc9726f5e49ad131e3cf"
+    auth_token  = "6607fa0c30d8fe1c04e84817835b62a3"
+
+    client = Client(account_sid, auth_token)
+
+    message = client.messages.create(
+        to=destNumber, 
+        from_=srcNumber,
+        body=sendMessage)
+    
+    return 'I feel great'
 
 def startModule(inputText):
     result1 = {'doc':'','language':'','score':'','name':''}
     if inputText is None:
         inputText = ''
 
+    print("Sending text message")
+    sms_text = sms_send("+17785583011", "+12056512211", inputText)
+    print("Sent text message")
 
-    result1 =  input_taker(inputText,'sentiment')
+
+    result1 =  input_taker(sms_text,'sentiment')
         #result1 =  input_taker(result['text'],result['ana'])
     
     resFeeling = 'I am quite happy' 
@@ -88,4 +105,3 @@ def startModule(inputText):
     output = result1['score'] 
 
     return output 
-
