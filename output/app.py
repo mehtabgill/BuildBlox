@@ -23,7 +23,7 @@ def index():
         '''
         output = result['text']
     else:
-        return render_template("index.html", output=None)
+        return render_template("index.html", output='')
     
     outputList = []
 
