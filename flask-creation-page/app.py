@@ -9,6 +9,7 @@ app = Flask(__name__)
 @app.route('/')
 def home():
     resPrint = 'twillio'
+    resCode = ''
     return render_template('create.html', **locals())  # render a template
 
 
@@ -49,7 +50,7 @@ def submitCreation():
 
     
     
-    resPrint = generateCode(moduleBlock)
+    resList,resPrint = generateCode(moduleBlock)
 
 
     #resText,resRank, mainContract = textFreqCal(topNRankNum,splitNum,contractDir)

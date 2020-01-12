@@ -15,11 +15,78 @@ import heapq
 complaintSubPath = 'complaintMain/'
 
 
+newHTMLPath = './codeBlocks/output/index.html'
+newPyPath = './codeBlocks/output/generatedSupport.py'
+
+
+def getStartHTMLCode():
+    with open("./codeBlocks/startHTML.txt", "r", encoding='utf-8') as f:
+        startHTML= f.read()
+    return startHTML
+
+def getEndHTMLCode():
+    with open("./codeBlocks/endHTML.txt", "r", encoding='utf-8') as f:
+        endHTML= f.read()
+    return endHTML
+
+def getModuleCode(moduleBlock):
+    # Returns a list of code
+    moduleResList = []
+
+    if moduleBlock == 'twillio':
+        resCode = '<b>Twillio feature</b><br>\n'
+        moduleResList.append(resCode)
+
+        resCode = '<input type="text" value="twillio"><br>\n'
+        moduleResList.append(resCode)
+
+        resCode = '<button>Send text to Twillio</button><br>\n'
+        moduleResList.append(resCode)
+
+    elif moduleBlock == 'slack':
+        resCode = '<b>Slack</b><br>\n'
+        moduleResList.append(resCode)
+        resCode = '<input type="text" value="slack"><br>\n'
+        moduleResList.append(resCode)
+    elif moduleBlock == 'azure':
+        resCode = '<b>Azure</b><br>\n'
+        moduleResList.append(resCode)
+        resCode = '<input type="text" value="azure"><br>\n'
+        moduleResList.append(resCode)
+
+    return moduleResList
+
+
+
 def generateCode(moduleBlock):
 
     print('We are using ', moduleBlock, '!')
 
-    return moduleBlock
+
+    resList = []
+    resCode = ''
+
+    # Initalize with starting HTML
+    resList.append(getStartHTMLCode())
+
+    # Insert middle code
+    resList = resList + getModuleCode(moduleBlock)
+
+
+    resList.append(getEndHTMLCode())
+
+    print(resList)
+
+
+    # Save resList as HTML file
+    newHTML_file = open(newHTMLPath ,"w") 
+    for codeLine in resList:
+        newHTML_file.write(codeLine)
+
+    newHTML_file.close() 
+
+
+    return resList,moduleBlock
 
 
 

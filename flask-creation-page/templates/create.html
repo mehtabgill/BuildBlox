@@ -64,16 +64,25 @@
       <br>
       Here is the original terms of service:
 
-      <!--
+      <u>Preview:</u>
       <p style='border: 1px solid black; padding:10px;'>
-        {% for text in mainContract %}
-          {{ text }}<br>
+        {% for codeLine in resList %}
+          {{ codeLine }}<br>
         {% endfor %}
       </p>
-      -->
+
+      <u>Raw code:</u>
+      <p style='border: 1px solid black; padding:10px;'>
+        {% for codeLine in resList %}
+          {{ codeLine }}<br>
+        {% endfor %}
+      </p>
+      
+      <!--
       <p style='border: 1px solid black; padding:10px;'>
         {{ resPrint }}
       </p>
+    -->
      
       <br><br>
       <center><button type="button" class="btn btn-danger">Reject terms of service</button> <button type="button" class="btn btn-success">Accept terms of service</button></center>
