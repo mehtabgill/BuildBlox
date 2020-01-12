@@ -18,6 +18,10 @@ complaintSubPath = 'complaintMain/'
 newHTMLPath = './codeBlocks/output/index.html'
 newPyPath = './codeBlocks/output/generatedSupport.py'
 
+def readCodeFromFile(filePath):
+    with open(filePath, "r", encoding='utf-8') as f:
+        outCode= f.read()
+    return outCode
 
 def getStartHTMLCode():
     with open("./codeBlocks/startHTML.txt", "r", encoding='utf-8') as f:
@@ -32,13 +36,18 @@ def getEndHTMLCode():
 def getModuleCode(moduleBlock):
     # Returns a list of code
     moduleResList = []
+    modulePyList = []
 
     if moduleBlock == 'twillio':
+        # HTML part
         resCode = '<b>Twillio feature</b><br>\n'
         moduleResList.append(resCode)
 
         resCode = '<input type="text" value="twillio"><br>\n'
         moduleResList.append(resCode)
+
+
+        # Python part
 
         resCode = '<button>Send text to Twillio</button><br>\n'
         moduleResList.append(resCode)
