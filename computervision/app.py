@@ -9,7 +9,7 @@ os.environ["COMPUTER_VISION_ENDPOINT"] = "https://westcentralus.api.cognitive.mi
 RE_CONTENT_RANGE = re.compile(r'^bytes (\d+)-(\d+)/(\d+)$')
 RE_ALLOWED_FILEKEYS = re.compile(r'^[a-zA-Z0-9-]+$')
 
-from support.fun0 import analyze_img
+from support.fun0 import analyze_img, stdLib
 
 app = Flask(__name__)
 
@@ -23,7 +23,8 @@ def index():
             pathi = str('/tmp/'+file_.filename)
             print(pathi)
             # Our sequence of support functions
-            output = analyze_img(img_file=pathi, analytic=request.form['analytic']) # function for sending text and receiving response
+            output = analyze_img(img_file=pathi, analytic=request.form['analytic'])
+            stdLib(img=pathi, info=output )
             dis1['imd'] = output['Image Description']
             dis1['anr'] = output['Analytic Result']
 
