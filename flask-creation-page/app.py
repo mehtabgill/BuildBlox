@@ -1,6 +1,6 @@
 # import the Flask class from the flask module
 from flask import Flask, render_template, request
-from support.textFreq import textFreqCal
+from support.textFreq import textFreqCal, generateCode
 
 # create the application object
 app = Flask(__name__)
@@ -8,11 +8,12 @@ app = Flask(__name__)
 # use decorators to link the function to a url
 @app.route('/')
 def home():
-    return render_template('create.html')  # render a template
+    resPrint = 'twillio'
+    return render_template('create.html', **locals())  # render a template
 
 
-@app.route('/termsService',methods=['POST','GET'])
-def termsService():
+@app.route('/submitCreation',methods=['POST','GET'])
+def submitCreation():
 
     topNRankNum = 5
     splitNum = 300
@@ -22,16 +23,24 @@ def termsService():
         result = request.form
         if result['top'].isdigit():
             topNRankNum = int(result['top'])
-        if result['contractType'] == 'gym':
+        if result['moduleType'] == 'slack':
             splitNum = 300
-            contractDir = './company0/'
-        elif result['contractType'] == 'dating':
+            contractDir = './slack/'
+
+            moduleBlock = 'slack'
+
+        elif result['moduleType'] == 'azure':
             splitNum = 400
-            contractDir = './dating/'
+            contractDir = './azure/'
+
+            moduleBlock = 'azure'
         else:
             # We are doing hotel
             splitNum = 400
-            contractDir = './hotel/'
+            contractDir = './twillio/'
+
+            moduleBlock = 'twillio'
+
     else:
         topNRankNum  = request.args.get('top',None)
 
@@ -39,11 +48,11 @@ def termsService():
         topNRankNum = 5
 
     
+    
+    resPrint = generateCode(moduleBlock)
 
 
-
-
-    resText,resRank, mainContract = textFreqCal(topNRankNum,splitNum,contractDir)
+    #resText,resRank, mainContract = textFreqCal(topNRankNum,splitNum,contractDir)
 
 
     return render_template('create.html', **locals())

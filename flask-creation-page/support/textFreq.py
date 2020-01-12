@@ -15,6 +15,16 @@ import heapq
 complaintSubPath = 'complaintMain/'
 
 
+def generateCode(moduleBlock):
+
+    print('We are using ', moduleBlock, '!')
+
+    return moduleBlock
+
+
+
+
+
 
 
 def removeStopWords(wordList):

@@ -50,23 +50,29 @@
     <!-- Begin page content -->
     <main role="main" class="container">
       <br><br><br>
-      <h1 class="mt-5">Terms of Service</h1>
+      <h1 class="mt-5">submitCreation</h1>
       <br>
-       <form class="form" action="/termsService" method="POST">
-          <select name="contractType">
-            <option value="gym">Gym</option>
-            <option value="dating">Dating</option>
-            <option value="hotel">Hotel</option>
+       <form class="form" action="/submitCreation" method="POST">
+          <select name="moduleType">
+            <option value="twillio">Twillio</option>
+            <option value="slack">Slack</option>
+            <option value="azure">Azure</option>
           </select>
           <input type="text" name="top" style='width:130px;' placeholder="# of Suggestions"/>
           <input type="submit" value="Filter"/>
        </form>
       <br>
       Here is the original terms of service:
+
+      <!--
       <p style='border: 1px solid black; padding:10px;'>
         {% for text in mainContract %}
           {{ text }}<br>
         {% endfor %}
+      </p>
+      -->
+      <p style='border: 1px solid black; padding:10px;'>
+        {{ resPrint }}
       </p>
      
       <br><br>
