@@ -16,10 +16,6 @@ def home():
 @app.route('/submitCreation',methods=['POST','GET'])
 def submitCreation():
 
-    topNRankNum = 5
-    splitNum = 300
-    contractDir = './company0/'
-
     if request.method == 'POST':
         result = request.form
 
@@ -27,8 +23,8 @@ def submitCreation():
         moduleList.append(result['moduleType0'])
 
 
-        #moduleList.append(result['moduleType1'])
-        #moduleList.append(result['moduleType2'])
+        moduleList.append(result['moduleType1'])
+        moduleList.append(result['moduleType2'])
     
     
         resList,resPrint = generateCode(moduleList)
