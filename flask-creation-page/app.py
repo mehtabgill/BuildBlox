@@ -8,6 +8,11 @@ app = Flask(__name__)
 # use decorators to link the function to a url
 @app.route('/')
 def home():
+    return render_template('create.html')  # render a template
+
+
+@app.route('/termsService',methods=['POST','GET'])
+def termsService():
 
     topNRankNum = 5
     splitNum = 300
@@ -41,7 +46,7 @@ def home():
     resText,resRank, mainContract = textFreqCal(topNRankNum,splitNum,contractDir)
 
 
-    return render_template('termsOfService.html', **locals())
+    return render_template('create.html', **locals())
 
 
 # start the server with the 'run()' method
