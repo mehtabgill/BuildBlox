@@ -23,8 +23,8 @@ def submitCreation():
         moduleList.append(result['moduleType0'])
 
 
-        moduleList.append(result['moduleType1'])
-        moduleList.append(result['moduleType2'])
+        #moduleList.append(result['moduleType1'])
+        #moduleList.append(result['moduleType2'])
     
     
         resList,resPrint = generateCode(moduleList)

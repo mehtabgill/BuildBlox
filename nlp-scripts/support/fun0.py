@@ -4,7 +4,6 @@ from twilio.rest import Client
 from flask import request
 from azure.cognitiveservices.language.textanalytics import TextAnalyticsClient
 from msrest.authentication import CognitiveServicesCredentials
-from .twilio_authentication import authenticator
 
 subscription_key = "5be536ec702a4487aa3c2b636a3cf887"
 endpoint = "https://westcentralus.api.cognitive.microsoft.com"
@@ -61,10 +60,8 @@ def input_taker(text,ana):
 
 def sms_send(destNumber, srcNumber, sendMessage):
 
-    # Your Account SID from twilio.com/console
-    account_sid = authenticator.account_sid
-    # Your Auth Token from twilio.com/console
-    auth_token  = authenticator.auth_token
+    account_sid = "AC9a1b3e11faf9fc9726f5e49ad131e3cf"
+    auth_token  = "6607fa0c30d8fe1c04e84817835b62a3"
 
     client = Client(account_sid, auth_token)
 
