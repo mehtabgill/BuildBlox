@@ -14,6 +14,13 @@ def index():
     # Input phase
     if request.method == 'POST':
         result = request.form
+        '''
+        if 'text' in result.keys()
+            output = result['text']
+        elif 'image' in result.keys():
+            output = result['image']
+
+        '''
         output = result['text']
     else:
         return render_template("index.html", output=None)
@@ -22,7 +29,9 @@ def index():
 
     # Our sequence of support functions
     output = support.fun0.startModule(output)  # function for sending text and receiving response
+    
     #output = support.fun1.startModule(output)  # function for sentimental analysis
+
     ############################
 
     return render_template("index.html", output=output)
