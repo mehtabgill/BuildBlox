@@ -53,14 +53,15 @@ def getModuleCode(moduleBlock):
         moduleResList.append(resCode)
         resCode = '<input type="text" value="azure"><br>\n'
         moduleResList.append(resCode)
+    else:
+        moduleResList('<b>Error<b>\n')
 
     return moduleResList
 
 
 
-def generateCode(moduleBlock):
+def generateCode(moduleList):
 
-    print('We are using ', moduleBlock, '!')
 
 
     resList = []
@@ -70,7 +71,9 @@ def generateCode(moduleBlock):
     resList.append(getStartHTMLCode())
 
     # Insert middle code
-    resList = resList + getModuleCode(moduleBlock)
+    for moduleBlock in moduleList: 
+        resList = resList + getModuleCode(moduleBlock.lower())
+        resList.append('<b><b>\n\n')
 
 
     resList.append(getEndHTMLCode())

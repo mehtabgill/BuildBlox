@@ -22,15 +22,14 @@ def submitCreation():
 
     if request.method == 'POST':
         result = request.form
-        if result['top'].isdigit():
-            topNRankNum = int(result['top'])
-        if result['moduleType'] == 'slack':
+    '''
+        if result['moduleType0'] == 'slack':
             splitNum = 300
             contractDir = './slack/'
 
             moduleBlock = 'slack'
 
-        elif result['moduleType'] == 'azure':
+        elif result['moduleType0'] == 'azure':
             splitNum = 400
             contractDir = './azure/'
 
@@ -41,16 +40,20 @@ def submitCreation():
             contractDir = './twillio/'
 
             moduleBlock = 'twillio'
-
+    
     else:
         topNRankNum  = request.args.get('top',None)
 
     if topNRankNum is None:
         topNRankNum = 5
-
+    '''
+    moduleList = []
+    moduleList.append(result['moduleType0'])
+    moduleList.append(result['moduleType1'])
+    moduleList.append(result['moduleType2'])
     
     
-    resList,resPrint = generateCode(moduleBlock)
+    resList,resPrint = generateCode(moduleList)
 
 
     #resText,resRank, mainContract = textFreqCal(topNRankNum,splitNum,contractDir)
