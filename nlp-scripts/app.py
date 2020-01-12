@@ -21,7 +21,7 @@ def index():
             output = result['image']
 
         '''
-        output = result['text']
+        output = result['text']   
     else:
         return render_template("index.html", output=None)
     
@@ -29,7 +29,6 @@ def index():
 
     # Our sequence of support functions
     output = support.fun0.startModule(output)  # function for sending text and receiving response
-    
     #output = support.fun1.startModule(output)  # function for sentimental analysis
 
     ############################
@@ -66,8 +65,7 @@ def sms_receive():
     print(resFeeling)
     output = result1['score'] 
 
-    return render_template("index.html", ana = output)
-
+    return render_template("index.html", output = output, resFeeling=resFeeling)
 
 if __name__ == __name__:
     app.run(debug=True)
