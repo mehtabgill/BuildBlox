@@ -11,7 +11,6 @@ import sys
 import time
 from krakenio import Client 
 
-
 # Add your Computer Vision subscription key to your environment variables.
 if 'COMPUTER_VISION_SUBSCRIPTION_KEY' in os.environ:
     subscription_key = os.environ['COMPUTER_VISION_SUBSCRIPTION_KEY']
