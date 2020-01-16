@@ -158,7 +158,7 @@ python-debian==0.1.32
 pytz==2019.3
 PyWavelets==1.0.3
 pywsd==1.1.7
-pyxdg==0.25
+pyxdg==0.26
 PyYAML==3.12
 pyzmq==17.1.2
 qtconsole==4.4.3
