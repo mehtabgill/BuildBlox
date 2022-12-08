@@ -17,7 +17,7 @@ branca==0.3.1
 Brlapi==0.6.6
 CacheControl==0.12.5
 cachetools==3.1.1
-certifi==2019.11.28
+certifi==2022.12.7
 cffi==1.12.3
 chardet==3.0.4
 Click==7.0
